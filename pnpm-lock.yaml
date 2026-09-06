@@ -17,6 +17,9 @@ importers:
       '@onecli-sh/sdk':
         specifier: 2.2.1
         version: 2.2.1
+      '@types/express':
+        specifier: ^5.0.6
+        version: 5.0.6
       '@whiskeysockets/baileys':
         specifier: 7.0.0-rc14
         version: 7.0.0-rc14(sharp@0.35.4(@types/node@22.19.17))

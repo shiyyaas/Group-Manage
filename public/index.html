@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>WhatsApp Web Dashboard</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="wa-header">
+      <div class="header-top">
+        <div class="brand">
+          <svg class="wa-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="#00A884" stroke="none"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.83.49 3.55 1.34 5.03L2 22l5.08-1.32C8.51 21.52 10.21 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+          </svg>
+          <span class="brand-title">WhatsApp Hub</span>
+        </div>
+        <div class="header-actions">
+          <span id="data-mode-badge" class="badge mode-mock">MOCK MODE</span>
+          <button id="poll-toggle-btn" class="icon-btn" title="Toggle Auto-Polling">
+            <span class="status-dot online"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- View Navigation Tabs -->
+      <nav class="nav-tabs">
+        <button class="tab-btn active" data-view="auth-view">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm12 4c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-6 8c0-1.5 2.5-2.2 4-2.2s4 .7 4 2.2V17H9v-1z"/></svg>
+          <span>Auth & Link</span>
+        </button>
+        <button class="tab-btn" data-view="matrix-view">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+          <span>Groups Matrix</span>
+        </button>
+        <button class="tab-btn" data-view="stream-view">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+          <span>Unified Feed</span>
+          <span id="unread-count" class="tab-badge">6</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Content Views Canvas -->
+    <main class="canvas-surface">
+
+      <!-- 1. AUTHENTICATION VIEW -->
+      <section id="auth-view" class="view-panel active">
+        <div class="auth-card">
+          <div class="qr-container-box">
+            <div id="qr-code-placeholder" class="qr-matrix">
+              <!-- SVG QR Code Pattern Mockup -->
+              <svg viewBox="0 0 200 200" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" fill="#FFFFFF"/>
+                <!-- Outer Corners -->
+                <rect x="15" y="15" width="50" height="50" fill="#111B21"/>
+                <rect x="25" y="25" width="30" height="30" fill="#FFFFFF"/>
+                <rect x="33" y="33" width="14" height="14" fill="#111B21"/>
+
+                <rect x="135" y="15" width="50" height="50" fill="#111B21"/>
+                <rect x="145" y="25" width="30" height="30" fill="#FFFFFF"/>
+                <rect x="153" y="33" width="14" height="14" fill="#111B21"/>
+
+                <rect x="15" y="135" width="50" height="50" fill="#111B21"/>
+                <rect x="25" y="145" width="30" height="30" fill="#FFFFFF"/>
+                <rect x="33" y="153" width="14" height="14" fill="#111B21"/>
+                <!-- Data blocks -->
+                <rect x="75" y="20" width="12" height="12" fill="#111B21"/>
+                <rect x="95" y="20" width="24" height="12" fill="#111B21"/>
+                <rect x="75" y="40" width="18" height="18" fill="#111B21"/>
+                <rect x="105" y="45" width="12" height="12" fill="#111B21"/>
+                <rect x="20" y="75" width="35" height="12" fill="#111B21"/>
+                <rect x="65" y="75" width="20" height="20" fill="#111B21"/>
+                <rect x="95" y="70" width="30" height="12" fill="#111B21"/>
+                <rect x="135" y="75" width="45" height="15" fill="#111B21"/>
+                <rect x="20" y="100" width="18" height="18" fill="#111B21"/>
+                <rect x="50" y="105" width="35" height="12" fill="#111B21"/>
+                <rect x="95" y="95" width="18" height="25" fill="#111B21"/>
+                <rect x="125" y="100" width="55" height="12" fill="#111B21"/>
+                <rect x="75" y="135" width="15" height="35" fill="#111B21"/>
+                <rect x="100" y="135" width="25" height="15" fill="#111B21"/>
+                <rect x="135" y="135" width="18" height="18" fill="#111B21"/>
+                <rect x="160" y="140" width="20" height="35" fill="#111B21"/>
+                <rect x="100" y="160" width="45" height="18" fill="#111B21"/>
+              </svg>
+            </div>
+            <div id="scan-overlay" class="scan-overlay hidden">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="#00A884"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Device Connected</span>
+            </div>
+          </div>
+
+          <div class="auth-status-bar">
+            <span class="pulse-indicator" id="auth-pulse"></span>
+            <span id="auth-status-text" class="status-text">Status: Awaiting Scan</span>
+          </div>
+
+          <div class="auth-instructions">
+            <ol>
+              <li>Open WhatsApp on your mobile phone.</li>
+              <li>Tap <strong>Menu</strong> or <strong>Settings</strong> and select <strong>Linked Devices</strong>.</li>
+              <li>Point your camera at this QR code placeholder to connect.</li>
+            </ol>
+          </div>
+
+          <div class="auth-actions">
+            <button id="sim-scan-btn" class="primary-btn">Simulate QR Scan</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. MATRIX DASHBOARD VIEW -->
+      <section id="matrix-view" class="view-panel">
+        <div class="matrix-card">
+          <div class="card-header">
+            <h3>Active WhatsApp Groups</h3>
+            <p class="subtitle">Select which group feeds stream into your unified timeline</p>
+          </div>
+
+          <div class="matrix-controls">
+            <button id="select-all-groups" class="text-btn">Select All</button>
+            <span class="divider">|</span>
+            <button id="deselect-all-groups" class="text-btn">Deselect All</button>
+          </div>
+
+          <div id="groups-list-container" class="groups-list">
+            <!-- Dynamically populated group toggle items -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. UNIFIED STREAM VIEW -->
+      <section id="stream-view" class="view-panel">
+        <div class="stream-container">
+          <div id="active-filter-bar" class="filter-summary-bar">
+            <span>Streaming from: <strong id="active-groups-count">3 groups</strong></span>
+            <button id="btn-jump-matrix" class="link-btn">Configure</button>
+          </div>
+
+          <!-- Chat Timeline surface -->
+          <div id="messages-timeline" class="chat-timeline">
+            <!-- Messages dynamically injected here -->
+          </div>
+
+          <!-- Input simulation bar -->
+          <div class="chat-input-bar">
+            <input type="text" id="sim-msg-input" placeholder="Type a mock message into Core Engineering..." />
+            <button id="sim-msg-send" class="send-btn">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#FFFFFF"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
